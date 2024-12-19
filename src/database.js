@@ -12,10 +12,8 @@ async function connectDb() {
   }
 
   try {
-    await mongoose.connect(MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    // Remove the deprecated options
+    await mongoose.connect(MONGODB_URI);
     isConnected = true;
     console.log("Database connected successfully");
   } catch (err) {
