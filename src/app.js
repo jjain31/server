@@ -20,7 +20,7 @@ app.use(cors({
 
 
 
-app.use("/auth", authRouter);A
+app.use("/auth", authRouter);
 app.use("/profile", profileRouter);
 
 app.use("/student", universityBankRouter);
