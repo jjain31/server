@@ -46,4 +46,3 @@ mongoose.connect(MONGODB_URI)
 
 
 
-module.exports = app;
