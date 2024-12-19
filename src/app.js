@@ -22,7 +22,9 @@ app.use(cors({
 app.use("/auth", authRouter);
 app.use("/profile", profileRouter);
 app.use("/student", universityBankRouter);
-
+app.get("/", (req, res) => {
+    res.send("API is running");
+});
 // MongoDB URI from environment variables
 const MONGODB_URI = process.env.MONGODB_URI;
 
