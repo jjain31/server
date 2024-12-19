@@ -27,7 +27,7 @@ app.use("/profile", profileRouter);
 app.use("/student", universityBankRouter);
 
 const MONGODB_URI = process.env.MONGODB_URI;
-
+const PORT = process.env.PORT || 3000;
 app.get("/", (req, res) => {
     res.send("API is running");
 });
@@ -45,5 +45,5 @@ mongoose.connect(MONGODB_URI)
   });
 
 
-const PORT = process.env.PORT || 3000;
 
+module.exports = app;
