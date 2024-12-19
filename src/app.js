@@ -28,7 +28,9 @@ app.use("/student", universityBankRouter);
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
-
+app.get("/", (req, res) => {
+    res.send("API is running");
+});
 mongoose.connect(MONGODB_URI)
   .then(async() => {
     console.log("Database connected successfully");
