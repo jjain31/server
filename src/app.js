@@ -28,22 +28,26 @@ app.get("/", (req, res) => {
 // MongoDB URI from environment variables
 const MONGODB_URI = process.env.MONGODB_URI;
 
-// Function to establish a database connection
-let isConnected = false; // Track connection status
+let isConnected = false; // Track connection status globally
 async function connectToDatabase() {
   if (!isConnected) {
     try {
-      await mongoose.connect(MONGODB_URI); // Modern connection without deprecated options
+      await mongoose.connect(MONGODB_URI); // Connect to MongoDB
       console.log("Database connected successfully");
       isConnected = true; // Mark as connected
     } catch (err) {
       console.error("Database connection error:", err);
+      throw new Error("Database connection failed");
     }
   }
 }
 
-// Export the handler function for Vercel
 module.exports = async (req, res) => {
-  await connectToDatabase(); // Ensure database connection is established
-  app(req, res); // Delegate request handling to Express
+  try {
+    await connectToDatabase(); // Ensure DB connection
+    app(req, res); // Delegate request handling to Express
+  } catch (error) {
+    res.status(500).json({ message: "Internal Server Error" });
+  }
 };
+
