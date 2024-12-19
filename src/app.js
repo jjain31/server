@@ -44,5 +44,7 @@ mongoose.connect(MONGODB_URI)
     console.error("Database connection error:", err);
   });
 
-
+module.exports = (req, res) => {
+  app(req, res);
+};
 
