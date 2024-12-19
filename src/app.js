@@ -18,7 +18,7 @@ app.use(cors({
   credentials:true,
 }));
 
-A
+
 
 app.use("/auth", authRouter);A
 app.use("/profile", profileRouter);
